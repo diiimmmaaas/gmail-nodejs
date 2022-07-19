@@ -15,7 +15,9 @@ app.use(bodyParser.json());
 
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
-    host: "gmail",
+    host: "smtp.gmail.com",
+    port: 587,
+    requireTLS: true,
     auth: {
         user: "dimonbich94@gmail.com", // generated ethereal user
         pass: "jofukbopdtsiswuo", // generated ethereal password
@@ -47,8 +49,8 @@ app.post("/sendMessage", async (req, res) => {
         </div>`
     });
 
-    res.send("Okay");
-    // res.send(req.body);
+    // res.send("Okay");
+    res.send(req.body);
 });
 
 app.listen(port, () => {
